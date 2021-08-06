@@ -32,8 +32,9 @@ function createSpectrogramVideoFromAudio(wavFileName, numScreens, chartTitle, re
 % | https://jpbellona.com            |
 %  ----------------------------------
 
-% NOTE: fucntion does NOT embed audio to the video, nor provide a scrolling
-% playbar bar. I created a template in Adobe Premiere to serve my use of
+% NOTE: the function simply generates a 'gif' like .mp4 video of spectrogram charts that match the length of the audio file. 
+% the function does NOT embed audio to the video, nor provide a scrolling
+% playback bar/line. I created a template in Adobe Premiere to serve my use of
 % audio sync and playback barline. Since the video file is the same length
 % as the audio file, a video editor uses basic snap alignment to sync.
 
@@ -153,6 +154,8 @@ while (I+win<length(x)) % while reading audio data:
         prefix = count-1; %start at 0
         j = floor(windowLength * 10); %number of ticks based upon window
         labels = (prefix*j) + floor(windowLength * 10);
+        
+        % loop for each page
         for i = 1:j
             xl = xticklabels;
             xcl = str2num(cell2mat(xl));
